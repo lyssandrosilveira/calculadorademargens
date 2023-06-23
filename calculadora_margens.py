@@ -24,16 +24,14 @@ if st.button("Calcular"):
         st.warning("A soma das probabilidades é maior que 100%. Ajuste as odds.")
 
     # Calcular as probabilidades reais extraindo o juice
-    probabilidade_real_casa = probabilidade_casa - (probabilidade_casa * juice / 100)
-    probabilidade_real_empate = probabilidade_empate - (probabilidade_empate * juice / 100)
-    probabilidade_real_visitante = probabilidade_visitante - (probabilidade_visitante * juice / 100)
+    probabilidade_real_casa = probabilidade_casa - (probabilidade_casa * juice / (100 - juice))
+    probabilidade_real_empate = probabilidade_empate - (probabilidade_empate * juice / (100 - juice))
+    probabilidade_real_visitante = probabilidade_visitante - (probabilidade_visitante * juice / (100 - juice))
 
-    st.write("Probabilidade Casa: {:.2f}%".format(probabilidade_casa))
-    st.write("Probabilidade Empate: {:.2f}%".format(probabilidade_empate))
-    st.write("Probabilidade Visitante: {:.2f}%".format(probabilidade_visitante))
-    st.write("Juice (Margem da Casa de Apostas): {:.2f}%".format(juice))
     st.write("Probabilidade Real Casa: {:.2f}%".format(probabilidade_real_casa))
     st.write("Probabilidade Real Empate: {:.2f}%".format(probabilidade_real_empate))
     st.write("Probabilidade Real Visitante: {:.2f}%".format(probabilidade_real_visitante))
+    st.write("Juice (Margem da Casa de Apostas): {:.2f}%".format(juice))
+
 
 
