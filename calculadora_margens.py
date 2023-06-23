@@ -1,7 +1,20 @@
 import streamlit as st
 
-def calcular_probabilidade(odd):
-    return round(1 / odd * 100, 2)
+def calcular_probabilidades(odd_casa, odd_empate, odd_visitante):
+    prob_odd_casa = 1 / odd_casa
+    prob_odd_empate = 1 / odd_empate
+    prob_odd_visitante = 1 / odd_visitante
+    total_prob = prob_odd_casa + prob_odd_empate + prob_odd_visitante
+
+    prob_justa_odd_casa = prob_odd_casa / total_prob * 100
+    prob_justa_odd_empate = prob_odd_empate / total_prob * 100
+    prob_justa_odd_visitante = prob_odd_visitante / total_prob * 100
+
+    odds_justa_odd_casa = 100 / prob_justa_odd_casa
+    odds_justa_odd_empate = 100 / prob_justa_odd_empate
+    odds_justa_odd_visitante = 100 / prob_justa_odd_visitante
+
+    return prob_justa_odd_casa, prob_justa_odd_empate, prob_justa_odd_visitante
 
 # Interface do Streamlit
 st.title("Calculadora de Probabilidade Real")
@@ -11,27 +24,8 @@ odd_empate = st.number_input("Odd Empate")
 odd_visitante = st.number_input("Odd Visitante")
 
 if st.button("Calcular"):
-    # Calcular as probabilidades a partir das odds informadas
-    probabilidade_casa = calcular_probabilidade(odd_casa)
-    probabilidade_empate = calcular_probabilidade(odd_empate)
-    probabilidade_visitante = calcular_probabilidade(odd_visitante)
+    prob_casa, prob_empate, prob_visitante = calcular_probabilidades(odd_casa, odd_empate, odd_visitante)
 
-    # Calcular o juice (margem da casa de apostas)
-    juice = 100 - (probabilidade_casa + probabilidade_empate + probabilidade_visitante)
-
-    # Verificar se a soma das probabilidades é maior que 100%
-    if juice < 0:
-        st.warning("A soma das probabilidades é maior que 100%. Ajuste as odds.")
-
-    # Calcular as probabilidades reais extraindo o juice
-    probabilidade_real_casa = probabilidade_casa - (probabilidade_casa * juice / 100)
-    probabilidade_real_empate = probabilidade_empate - (probabilidade_empate * juice / 100)
-    probabilidade_real_visitante = probabilidade_visitante - (probabilidade_visitante * juice / 100)
-
-    st.write("Probabilidade Real Casa: {:.2f}%".format(probabilidade_real_casa))
-    st.write("Probabilidade Real Empate: {:.2f}%".format(probabilidade_real_empate))
-    st.write("Probabilidade Real Visitante: {:.2f}%".format(probabilidade_real_visitante))
-    st.write("Juice (Margem da Casa de Apostas): {:.2f}%".format(juice))
-
-
-
+    st.write("Probabilidade Real Casa: {:.2f}%".format(prob_casa))
+    st.write("Probabilidade Real Empate: {:.2f}%".format(prob_empate))
+    st.write("Probabilidade Real Visitante: {:.2f}%".format(prob_visitante))
