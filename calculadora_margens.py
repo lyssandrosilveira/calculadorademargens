@@ -10,16 +10,12 @@ def calcular_probabilidades(odd_casa, odd_empate, odd_visitante):
     prob_justa_odd_empate = prob_odd_empate / total_prob * 100
     prob_justa_odd_visitante = prob_odd_visitante / total_prob * 100
 
-    odds_justa_odd_casa = 100 / prob_justa_odd_casa
-    odds_justa_odd_empate = 100 / prob_justa_odd_empate
-    odds_justa_odd_visitante = 100 / prob_justa_odd_visitante
-
     juice = 100 - (prob_justa_odd_casa + prob_justa_odd_empate + prob_justa_odd_visitante)
 
     return prob_justa_odd_casa, prob_justa_odd_empate, prob_justa_odd_visitante, juice
 
 # Interface do Streamlit
-st.title("Qual a Probabilidade Real?")
+st.title("Calculadora de Probabilidade Real e Juice")
 
 odd_casa = st.number_input("Odd Casa")
 odd_empate = st.number_input("Odd Empate")
