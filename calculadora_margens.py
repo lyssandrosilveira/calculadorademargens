@@ -1,18 +1,15 @@
 import streamlit as st
 
 def calcular_probabilidades(odd_casa, odd_empate, odd_visitante):
-    prob_odd_casa = 1 / odd_casa
-    prob_odd_empate = 1 / odd_empate
-    prob_odd_visitante = 1 / odd_visitante
-    total_prob = prob_odd_casa + prob_odd_empate + prob_odd_visitante
+    total_odds = odd_casa + odd_empate + odd_visitante
 
-    prob_justa_odd_casa = prob_odd_casa / total_prob * 100
-    prob_justa_odd_empate = prob_odd_empate / total_prob * 100
-    prob_justa_odd_visitante = prob_odd_visitante / total_prob * 100
+    prob_odd_casa = odd_casa / total_odds * 100
+    prob_odd_empate = odd_empate / total_odds * 100
+    prob_odd_visitante = odd_visitante / total_odds * 100
 
-    juice = 100 - (prob_justa_odd_casa + prob_justa_odd_empate + prob_justa_odd_visitante)
+    juice = 100 - (prob_odd_casa + prob_odd_empate + prob_odd_visitante)
 
-    return prob_justa_odd_casa, prob_justa_odd_empate, prob_justa_odd_visitante, juice
+    return prob_odd_casa, prob_odd_empate, prob_odd_visitante, juice
 
 # Interface do Streamlit
 st.title("Qual a Probabilidade Real?")
