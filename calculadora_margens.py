@@ -9,7 +9,7 @@ def calcular_odd_justa(odd, margem):
     return round(odd_justa, 2)
 
 # Interface do Streamlit
-st.title("Calculadora de Odds Justas")
+st.title("Qual Odd Justa?")
 
 odd_casa = st.number_input("Odd Casa")
 odd_empate = st.number_input("Odd Empate")
