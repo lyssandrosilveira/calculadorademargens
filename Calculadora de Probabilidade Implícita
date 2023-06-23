@@ -1,0 +1,23 @@
+import streamlit as st
+
+def calcular_probabilidade_implicita(odd_casa, odd_empate, odd_fora):
+    soma_odds = odd_casa + odd_empate + odd_fora
+    if soma_odds > 100:
+        return "A soma das probabilidades excede 100%"
+    
+    prob_casa = round(100 / odd_casa, 2)
+    prob_empate = round(100 / odd_empate, 2)
+    prob_fora = round(100 / odd_fora, 2)
+    
+    return f"Probabilidade Implícita: Casa: {prob_casa}%, Empate: {prob_empate}%, Fora: {prob_fora}%"
+
+def main():
+    st.title("Calculadora de Probabilidade Implícita")
+    
+    st.write("Insira as probabilidades (odds) das opções:")
+    odd_casa = st.number_input("Odd Casa")
+    odd_empate = st.number_input("Odd Empate")
+    odd_fora = st.number_input("Odd Fora")
+    
+    if st.button("Calcular"):
+        resultado = calcular_probabilidade_impli<|endoftext|>
