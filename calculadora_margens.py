@@ -29,3 +29,6 @@ if st.button("Calcular"):
     st.write("Probabilidade Real Casa: {:.2f}%".format(prob_casa))
     st.write("Probabilidade Real Empate: {:.2f}%".format(prob_empate))
     st.write("Probabilidade Real Visitante: {:.2f}%".format(prob_visitante))
+
+
+st.text("Desenvolvido por Lyssandro Silveira")
